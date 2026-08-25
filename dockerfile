@@ -1,11 +1,7 @@
 # Using Ubuntu image
 FROM ubuntu:24.04
 
-# Defining environmental variables needed for the directory connector to function (Having BWDC to read the secrets as plaintext so there is no need to store secrets in the linux keyring)
 ENV DEBIAN FRONTEND=noninteractive
-ENV BITWARDENCLI_CONNECTOR_PLAINTEXT_SECRETS=true
-ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
-ENV BITWARDENCLI_CONNECTOR_APPDATA_DIR=/home/ubuntu/.config/'Bitwarden Directory Connector'/
 
 # Installing libraries and dependencies
 RUN apt-get update && apt-get install -y \
