@@ -1,5 +1,5 @@
 # Using Ubuntu image
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 # Defining environmental variables needed for the directroy connector to function (Having BWDC to read the secrets as plaintext so there is no need to store secrets in the linux keyring)
 ENV DEBIAN FRONTEND=noninteractive
