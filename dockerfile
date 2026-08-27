@@ -10,7 +10,6 @@ unzip \
 libsecret-1-0 \
 libatomic1 \
 dbus-x11 --no-install-recommends \
-gettext-base \
 ca-certificates \
 && rm -rf /var/lib/apt/lists/*
 
