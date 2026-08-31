@@ -2,7 +2,7 @@
 FROM ubuntu:24.04
 
 ENV DEBIAN FRONTEND=noninteractive
-ENV BW_APP_DATA=/home/ubuntu/.config/'Bitwarden Directory Connector'
+ENV BW_APP_DATA=/home/ubuntu/.config/'Bitwarden Directory Connector'/
 # Installing libraries and dependencies
 RUN apt-get update && apt-get install -y \
 curl \
