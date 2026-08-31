@@ -2,7 +2,6 @@
 FROM ubuntu:24.04
 
 ENV DEBIAN FRONTEND=noninteractive
-ENV BW_APP_DATA=/home/ubuntu/.config/'Bitwarden Directory Connector'/
 # Installing libraries and dependencies
 RUN apt-get update && apt-get install -y \
 curl \
@@ -13,6 +12,7 @@ dbus-x11 --no-install-recommends \
 ca-certificates \
 && rm -rf /var/lib/apt/lists/*
 
+ENV BW_APP_DATA=/home/ubuntu/.config/'Bitwarden Directory Connector'/
 RUN mkdir -p ${BW_APP_DATA} \
     && chown -R ubuntu:ubuntu /home/ubuntu
 
@@ -28,4 +28,5 @@ RUN curl -L -o /tmp/bwdc.zip "https://github.com/bitwarden/directory-connector/r
 
 # Set working directory for the data file
 USER ubuntu:ubuntu
-WORKDIR /home/ubuntu
+WORKDIR /home/ubuntu/.config/'Bitwarden Directory Connector'/
+ENTRYPOINT["bwdc"]
