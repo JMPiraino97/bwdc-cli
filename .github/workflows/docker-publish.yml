@@ -80,6 +80,7 @@ jobs:
 
       # Scanning Image for any vulnerabilties
       - name: Scan Docker image
+        if: github.event_name == 'pull_request'
         id: scan
         uses: aquasecurity/trivy-action@master
         with:
