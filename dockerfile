@@ -14,12 +14,13 @@ ca-certificates \
 && rm -rf /var/lib/apt/lists/*
 
 # Creating non-root user and groups to harden image
-RUN groupadd -g 1001 bwdc \
-    && useradd -u 1001 -g 1001 --create-home -s /bin/bash bwdc \
+RUN groupadd -g 1001 ubuntu \
+    && useradd -u 1001 -g ubuntu -m -d /home/ubuntu -s /bin/bash ubuntu \
     && mkdir -p ${BW_APP_DATA} \
-    && chown -R 1001:1001 ${BW_APP_DATA} \
-    && chown -R 1001:1001 /home/bwdc \
-    && chown -R 1001:1001 /etc/ssl/certs \
+    && chown -R ubuntu:ubuntu ${BW_APP_DATA} \
+    && chmod 755 ${BW_APP_DATA} \
+    && chown -R ubuntu:ubuntu /home/ubuntu \
+    && chown -R ubuntu:ubuntu /etc/ssl/certs \
     && chmod 755 /etc/ssl/certs
 
 ENV BWDC_VERSION=2026.6.1
@@ -30,6 +31,6 @@ RUN curl -L -o /tmp/bwdc.zip "https://github.com/bitwarden/directory-connector/r
     && rm /tmp/bwdc.zip
 
 # Set working directory for the data file
-USER 1001:1001
+USER ubuntu:ubuntu
 WORKDIR /home/ubuntu/.config/'Bitwarden Directory Connector'/
 ENTRYPOINT ["bwdc"]
