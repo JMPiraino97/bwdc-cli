@@ -14,8 +14,8 @@ ca-certificates \
 && rm -rf /var/lib/apt/lists/*
 
 # Creating non-root user and groups to harden image
-RUN groupadd -g 1001 bwdc \
-    && useradd -u 1001 -g 1001 --create-home --shell /bin/bash bwdc \
+RUN groupadd --gid 1001 bwdc \
+    && useradd --uid 1001 --gid 1001 --create-home --shell /bin/bash bwdc \
     && mkdir -p ${BW_APP_DATA} \ 
     && chown -R 1001:1001 /home/bwdc \
     && chown -R 1001:1001 /etc/ssl/certs && \
