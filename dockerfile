@@ -29,4 +29,4 @@ RUN curl -L -o /tmp/bwdc.zip "https://github.com/bitwarden/directory-connector/r
 # Set working directory for the data file
 USER ubuntu:ubuntu
 WORKDIR /home/ubuntu/.config/'Bitwarden Directory Connector'/
-ENTRYPOINT["bwdc"]
+ENTRYPOINT ["bwdc"]
